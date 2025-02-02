@@ -9,7 +9,7 @@
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}",
-            "args":["7 + 9"]
+            "args":["9 + 8 * 7"]
         },
         {
             "type": "java",

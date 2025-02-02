@@ -7,17 +7,19 @@ import java.util.List;
 
 public class Lexer {
 
-    public List<Token> tokenize(String expression){
+    public List<Token> tokenize(String expression) {
         List<Token> tokens = new ArrayList<>();
-        for (char c : expression.toCharArray()){
-            if (Character.isDigit(c)){
-                tokens.add(new Token("Number",String.valueOf(c)));
-            } else if (c == '+')
-            {
-            tokens.add(new Token("OPERATOR", String.valueOf(c)));
+        for (char c : expression.toCharArray()) {
+            if (Character.isDigit(c)) {
+                tokens.add(new Token("NUMBER", String.valueOf(c)));
+            } else if (Character.isWhitespace(c)) {
+                continue; // Skip whitespace
+            } else if (c == '+' || c == '-' || c == '*' || c == '/') { // Fill logic for -, *, /{
+                tokens.add(new Token("OPERATOR", String.valueOf(c)));
+            } else {
+                throw new RuntimeException("Invalid character found: " + c);
             }
         }
         return tokens;
     }
-
 }
